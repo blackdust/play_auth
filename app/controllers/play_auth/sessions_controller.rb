@@ -8,7 +8,7 @@ class PlayAuth::SessionsController < PlayAuth::ApplicationController
     user = User.where(email: params[:session][:email]).first
     if user && user.authenticate(params[:session][:password])
       sign_in :user, user
-      redirect_to root_path, notice: 'login successfully'
+      redirect_to '/', notice: 'login successfully'
     else
       flash[:danger] = 'Invalid email/password combination' # 不完全正确
       render 'new'
@@ -17,6 +17,6 @@ class PlayAuth::SessionsController < PlayAuth::ApplicationController
 
   def destroy
     sign_out if user_signed_in?
-    redirect_to root_url
+    redirect_to '/'
   end
 end
