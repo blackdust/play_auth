@@ -1,5 +1,5 @@
 <h1>Home</h1>
-<% if logged_in? %>
+<% if user_signed_in? %>
   Hi <%= current_user.name %>!
   <br />
   <%= link_to 'logout', '/auth/logout', method: :delete %>
