@@ -55,7 +55,7 @@ bundle install
     %span 登出
 ```
 
-### 主要helper方法为:
+### 主要方法为:
 #### current_user
 获取当前登录用户，未登录返回nil
 
