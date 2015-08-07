@@ -1,41 +1,69 @@
 # PlayAuth
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/play_auth`. To experiment with that code, run `bin/console` for an interactive prompt.
+这个 gem 目前用作简单的用户验证管理，在组件开发中替代厚重的devise
+方便团队进行组件开发
 
-TODO: Delete this and the text above, and describe your gem
+组件开发规范参考：  
+http://s.4ye.me/DE1J85
 
-## Installation
 
-Add this line to your application's Gemfile:
+## 使用办法
 
+在sample的 **Gemfile** 中添加引用
 ```ruby
-gem 'play_auth'
+# file ./Gemfile
+gem 'play_auth', :github => 'mindpin/play_auth',
+                 :tag => :latest
+
 ```
 
-And then execute:
+然后运行
+```shell
+bundle install
+```
 
-    $ bundle
+## 使用示例
+由[codestart](https://github.com/mindpin/codestart)，生成的项目，可以看出最基本的使用形式：
+```haml
+.engine-generated
+  .desc 
+    %span rails engine 
+    %strong second_gem 
+    %span 已成功创建
+  .desc 你可以继续进行组件开发了
 
-Or install it yourself as:
+.engine-generated
+  - if user_signed_in?
+    .desc.current-user
+      %span 当前用户：
+      %strong= current_user.name
+  - else
+    .desc
+      %span 当前无登录用户
 
-    $ gem install play_auth
+  .desc
+    %span 访问
+    %a{:href => '/auth'} /auth
+    %span 注册
+  .desc
+    %span 访问
+    %a{:href => '/auth/login'} /auth/login
+    %span 登录
+  .desc
+    %span 点击
+    %a{:href => '/auth/logout', :data => {:method => :delete}} DELETE /auth/logout
+    %span 登出
+```
 
-## Usage
+### 主要helper方法为:
+#### current_user
+获取当前登录用户，未登录返回nil
 
-TODO: Write usage instructions here
+#### user_signed_in?  
+是否已经登录
 
-## Development
+#### sign_in(scope, user)  
+使用user登录，scope为devise才用到，不熟悉的，这里传入 **:user** 即可
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake false` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/play_auth. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+#### sign_out(resource_or_scope=nil)  
+登出，传入参数为仿devise设计，不熟悉的，这里可以忽略
