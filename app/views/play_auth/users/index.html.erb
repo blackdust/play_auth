@@ -192,23 +192,24 @@
 
   }
 </style>
-<div class="page-container">
   <h1>用户列表</h1>
+  <div>
   <table>
     <thead>
-      <tr>
+      <tr style = 'height:50px'>
+        <td></td>
         <td>用户名</td>
         <td>Email</td>
-        <td></td>
       </tr>
     </thead>
-
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr style ='height:50px'>
         <td></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td> 
       </tr>
-    <% end -%>
+      <% end -%>
+   </tbody>
   </table>
-</div>
+

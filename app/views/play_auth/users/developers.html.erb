@@ -1,0 +1,61 @@
+<style>
+.item{
+  padding:5px 10px;
+  height:100px;
+  background-color: #E1E1E1;
+  /*margin: 10px*/
+}
+.img{
+float:left;
+margin:0 5px;
+border-radius: 10px;
+width: 100px;
+height: 100px;
+}
+.information{
+  float:left;
+  font-size: 150%
+}
+.bar{
+float:left;
+background-color: black;
+height:110px;
+width: 20px
+}
+.hidden{
+  display: none
+}
+</style>
+
+<div class = 'developers-list-page'>
+  <h2>用户列表:</h2>
+  <div = 'information'>
+    当前登录用户：
+    <span class = 'loged-user'><%= User.find(current_user).name%></span>
+  </div> 
+  <% @users.each do |user| %>
+  <div class ='user_area'>
+    <div class = 'bar'>
+    </div>
+    <div class='item'>
+      <div class = 'img'>
+        <%=image_tag user.image ,size:'100x100'%>
+      </div>
+      <div class ='information'>
+        用户名:
+        <span class = 'name'><%= user.name %></span>
+        <%if User.find(current_user).name == user.name%>
+        <span class = 'log-mark '> (已登录)</span>
+        <%else%>
+        <span class = 'log-mark hidden'> (已登录)</span>
+        <%end%>
+        <br>
+        <br>
+        邮箱：
+        <span class = 'mail'><%= user.email %></span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <%end%>
+</div>
