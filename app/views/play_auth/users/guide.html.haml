@@ -18,5 +18,6 @@
     %a{:href => '/auth/users/developers'} /auth/users/developers
     %span 用户列表（快速登录）
 - if current_user.present?
-  = link_to '登出用户', '/auth/logout', method: :delete
+  = link_to '登出用户', '/auth/logout', method: :delete, class: "btn btn-default"
+
     

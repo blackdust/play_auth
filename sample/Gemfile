@@ -46,3 +46,5 @@ gem 'mongoid', '~> 4.0.2'
 # 引用gem
 gem 'play_auth', path: '../'
 gem 'haml'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'simple_form'

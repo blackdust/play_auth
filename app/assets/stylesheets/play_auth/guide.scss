@@ -1,0 +1,41 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.guide-middle{
+  padding: 15px;
+  background-color: #ffffda;
+  height:400px
+}
+
+/*developers列表*/
+.developers-list-page{
+  background-color: white
+}
+.item{
+  padding:5px 10px;
+  height:110px;
+  background-color: #E1E1E1;
+}
+.user-area{
+  text-align: left
+}
+.img{
+float:left;
+margin:0 5px;
+border-radius: 10px;
+width: 100px;
+height: 100px;
+}
+.information{
+  float:left;
+  font-size: 150%
+}
+.bar{
+float:left;
+background-color: black;
+height:110px;
+width: 20px
+}
+.hidden{
+  display: none
+}
