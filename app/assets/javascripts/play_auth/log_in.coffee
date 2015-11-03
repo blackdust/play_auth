@@ -7,14 +7,14 @@ class DevelopersList
     @bind_event()
 
   bind_event: ->
-    $user_area = @$elm.find('.user_area')
+    $user_area = @$elm.find('.user-area')
     $user_area.mouseenter (event)=>
-      jQuery(".user_area").css("background-color","#E1E1E1")
-      jQuery(event.target).closest(".user_area .item").css("background-color","yellow");
+      jQuery(".user-area").css("background-color","#E1E1E1")
+      jQuery(event.target).closest(".user-area .item").css("background-color","yellow");
     $user_area.mouseleave (event)=>
-      jQuery(event.target).closest(".user_area .item").css("background-color","#E1E1E1");
-    @$elm.on "click", ".user_area", (event)=> 
-      mail  = jQuery(event.target).find('.mail').text()
+      jQuery(event.target).closest(".user-area .item").css("background-color","#E1E1E1");
+    @$elm.on "click", ".user-area", (event)=> 
+      mail  = jQuery(event.target).find('.mail').attr('data-mail')
       $.ajax
         url: "/auth/users/log_in_user"
         method: "post"
@@ -24,6 +24,6 @@ class DevelopersList
       .success (msg) =>
         @$elm.find('.log-mark').addClass('hidden')
         jQuery(event.target).find('.information .log-mark').removeClass('hidden')
-        @$elm.find('.loged-user').text(msg.currrent_user_name)
+        @$elm.find('.loged-user').text(msg.current_user_name)
 
 

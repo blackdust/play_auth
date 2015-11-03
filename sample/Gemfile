@@ -45,3 +45,4 @@ end
 gem 'mongoid', '~> 4.0.2'
 # 引用gem
 gem 'play_auth', path: '../'
+gem 'haml'

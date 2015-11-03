@@ -1,0 +1,33 @@
+.developers-list-page
+  %h2 
+    用户列表:
+  .state
+    当前登录用户：
+    -if current_user.present?
+      %span{:class => 'loged-user'}
+        = User.find(current_user).name
+    -else
+      %span{:class=>'loged-user'}
+        当前无用户登录
+  -@users.each do |user| 
+    .user-area
+      .bar
+      .item
+        .img
+          =image_tag user.image ,size:'100x100'
+        .information
+          用户名:
+          %span{:class=>'name'}
+            = user.name
+          -if !current_user.blank? && current_user.name == user.name
+            %span{:class=>'log-mark'}
+              (已登录)
+          -else
+            %span{:class=>'log-mark hidden'}
+              (已登录)
+          %br
+          邮箱：
+          %span{:class=>'mail',:data=>{:mail=>user.email}}
+            = user.email
+    %br
+
