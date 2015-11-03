@@ -14,12 +14,12 @@ class DevelopersList
     $user_area.mouseleave (event)=>
       jQuery(event.target).closest(".user-area .item").css("background-color","#E1E1E1");
     @$elm.on "click", ".user-area", (event)=> 
-      mail  = jQuery(event.target).find('.mail').attr('data-mail')
+      user_id  = jQuery(event.target).find('.mail').attr('data-id')
       $.ajax
         url: "/auth/users/log_in_user"
         method: "post"
         data:{
-          'user_email':mail
+          'user_id':user_id
         }
       .success (msg) =>
         @$elm.find('.log-mark').addClass('hidden')
