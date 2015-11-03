@@ -22,13 +22,9 @@ class PlayAuth::UsersController < PlayAuth::ApplicationController
   end
 
   def log_in_user
-    p '~~~~~~~~~~~~~~'
-    p params[:user_email]
-
-    find_user = User.where(:email=>params[:user_email]).first
+    find_user = User.where(:email => params[:user_email]).first
     sign_out if user_signed_in?
     sign_in :user, find_user 
-    p find_user.name
     render :json => {
       current_user_name:find_user.name
       }, :status => 200
