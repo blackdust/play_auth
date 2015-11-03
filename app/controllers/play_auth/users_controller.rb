@@ -17,6 +17,25 @@ class PlayAuth::UsersController < PlayAuth::ApplicationController
     @user = User.new
   end
 
+  def developers
+    @users = User.all
+  end
+
+  def log_in_user
+    find_user = User.find(params[:user_id])
+    sign_out if user_signed_in?
+    sign_in :user, find_user 
+    render :json => {
+      current_user_name:find_user.name
+      }, :status => 200
+  end
+
+  def guide
+
+  end
+ 
+
+
   # GET /users/1/edit
   #def edit
   #end

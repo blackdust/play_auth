@@ -1,0 +1,23 @@
+%br
+%br
+%br
+.guide
+  - if current_user.present?
+    %span 当前用户是#{current_user.name}
+  - else
+    %span 目前没有用户登录
+.guide-middle
+  - if User.count == 0
+    %p 运行 “rake play_auth:create_data”数据库预置五个用户，初始密码为1 
+  .desc
+    %span 访问
+    %a{:href => '/auth/users/new'} /auth/users/new
+    %span 注册
+  .desc
+    %span 访问
+    %a{:href => '/auth/users/developers'} /auth/users/developers
+    %span 用户列表（快速登录）
+- if current_user.present?
+  = link_to '登出用户', '/auth/logout', method: :delete, class: "btn btn-default"
+
+    
